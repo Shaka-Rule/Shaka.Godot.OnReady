@@ -1,0 +1,1 @@
+# OnReady Attribute source generator

@@ -1,0 +1,124 @@
+﻿{
+  Diagnostics: [
+    {
+      Location: /*
+    [OnReady("frezfrezf")]
+    public static int OnReadyList { get; set; }
+                      ^^^^^^^^^^^
+
+*/
+ : (7,22)-(7,33),
+      Message: The [OnReady] member 'OnReadyList' type must derive from Godot.Node,
+      Severity: Error,
+      Descriptor: {
+        Id: SGOR001,
+        Title: On ready member type must derive from Godot.Node,
+        Description: The [OnReady] member type must derive from Godot.Node. Change the type to a type which derives from Node.,
+        MessageFormat: The [OnReady] member '{0}' type must derive from Godot.Node,
+        Category: Usage,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    },
+    {
+      Location: /*
+    [OnReady("frezfrezf")]
+    public static int OnReadyList { get; set; }
+                      ^^^^^^^^^^^
+
+*/
+ : (7,22)-(7,33),
+      Message: The [OnReady] member 'OnReadyList' must be partial without an implementation,
+      Severity: Error,
+      Descriptor: {
+        Id: SGOR002,
+        Title: On ready member must be partial and must not be implemented,
+        Description: The [OnReady] member must be partial and must not have a body. Make the member partial and remove the body.,
+        MessageFormat: The [OnReady] member '{0}' must be partial without an implementation,
+        Category: Usage,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    },
+    {
+      Location: /*
+    [OnReady("frezfrezf")]
+    public static int OnReadyList { get; set; }
+                      ^^^^^^^^^^^
+
+*/
+ : (7,22)-(7,33),
+      Message: The [OnReady] member 'OnReadyList' cannot be static,
+      Severity: Error,
+      Descriptor: {
+        Id: SGOR003,
+        Title: On ready member cannot be static,
+        Description: The [OnReady] member cannot be static. Remove the static keyword from the member.,
+        MessageFormat: The [OnReady] member '{0}' cannot be static,
+        Category: Usage,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    },
+    {
+      Location: /*
+    [OnReady("/root/mynode")]
+    public static List<int> OnReadyInt();
+                            ^^^^^^^^^^
+}
+*/
+ : (10,28)-(10,38),
+      Message: The [OnReady] member 'OnReadyInt' type must derive from Godot.Node,
+      Severity: Error,
+      Descriptor: {
+        Id: SGOR001,
+        Title: On ready member type must derive from Godot.Node,
+        Description: The [OnReady] member type must derive from Godot.Node. Change the type to a type which derives from Node.,
+        MessageFormat: The [OnReady] member '{0}' type must derive from Godot.Node,
+        Category: Usage,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    },
+    {
+      Location: /*
+    [OnReady("/root/mynode")]
+    public static List<int> OnReadyInt();
+                            ^^^^^^^^^^
+}
+*/
+ : (10,28)-(10,38),
+      Message: The [OnReady] member 'OnReadyInt' must be partial without an implementation,
+      Severity: Error,
+      Descriptor: {
+        Id: SGOR002,
+        Title: On ready member must be partial and must not be implemented,
+        Description: The [OnReady] member must be partial and must not have a body. Make the member partial and remove the body.,
+        MessageFormat: The [OnReady] member '{0}' must be partial without an implementation,
+        Category: Usage,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    },
+    {
+      Location: /*
+    [OnReady("/root/mynode")]
+    public static List<int> OnReadyInt();
+                            ^^^^^^^^^^
+}
+*/
+ : (10,28)-(10,38),
+      Message: The [OnReady] member 'OnReadyInt' cannot be static,
+      Severity: Error,
+      Descriptor: {
+        Id: SGOR003,
+        Title: On ready member cannot be static,
+        Description: The [OnReady] member cannot be static. Remove the static keyword from the member.,
+        MessageFormat: The [OnReady] member '{0}' cannot be static,
+        Category: Usage,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    }
+  ]
+}

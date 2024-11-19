@@ -1,0 +1,44 @@
+﻿{
+  Diagnostics: [
+    {
+      Location: /*
+    [OnReady("frezfrezf")]
+    public partial List<MyTest> OnReadyList { get; set; }
+                                ^^^^^^^^^^^
+
+*/
+ : (6,32)-(6,43),
+      Message: The [OnReady] member 'OnReadyList' type must derive from Godot.Node,
+      Severity: Error,
+      Descriptor: {
+        Id: SGOR001,
+        Title: On ready member type must derive from Godot.Node,
+        Description: The [OnReady] member type must derive from Godot.Node. Change the type to a type which derives from Node.,
+        MessageFormat: The [OnReady] member '{0}' type must derive from Godot.Node,
+        Category: Usage,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    },
+    {
+      Location: /*
+    [OnReady("/root/mynode")]
+    public partial int OnReadyInt();
+                       ^^^^^^^^^^
+}
+*/
+ : (9,23)-(9,33),
+      Message: The [OnReady] member 'OnReadyInt' type must derive from Godot.Node,
+      Severity: Error,
+      Descriptor: {
+        Id: SGOR001,
+        Title: On ready member type must derive from Godot.Node,
+        Description: The [OnReady] member type must derive from Godot.Node. Change the type to a type which derives from Node.,
+        MessageFormat: The [OnReady] member '{0}' type must derive from Godot.Node,
+        Category: Usage,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    }
+  ]
+}
