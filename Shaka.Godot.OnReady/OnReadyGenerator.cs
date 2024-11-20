@@ -63,7 +63,7 @@ public class {OnReadyAttribute} : Attribute
     private static bool IsClassWithOnReadyMember(SyntaxNode syntaxNode)
     {
         return syntaxNode is ClassDeclarationSyntax classDecl &&
-               classDecl.AnyMemberHasAttribute(AttributeNameShort, SyntaxKind.FieldDeclaration, SyntaxKind.PropertyDeclaration);
+               classDecl.AnyMemberHasAttribute(AttributeNameShort, SyntaxKind.MethodDeclaration, SyntaxKind.PropertyDeclaration);
     }
     
     private static void Execute(Compilation compilation, ImmutableArray<ClassDeclarationSyntax> classes, SourceProductionContext ctx)
@@ -75,7 +75,7 @@ public class {OnReadyAttribute} : Attribute
         {
             var onReadyMembers = typeSymbol
                 .GetMembers()
-                .Where(m => OnReadyMember.Validate(m, ctx))
+                .Where(m => OnReadyMember.Validate(typeSymbol, m, ctx))
                 .Select(OnReadyMember.From)
                 .ToList();
             

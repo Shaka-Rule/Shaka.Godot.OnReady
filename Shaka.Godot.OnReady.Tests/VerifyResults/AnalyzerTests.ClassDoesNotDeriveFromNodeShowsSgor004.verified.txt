@@ -1,0 +1,24 @@
+﻿{
+  Diagnostics: [
+    {
+      Location: /*
+    [OnReady("Player")]
+    public partial Godot.Node2D Player { get; }
+                                ^^^^^^
+}
+*/
+ : (6,32)-(6,38),
+      Message: Parent class must derive from Godot.Node,
+      Severity: Error,
+      Descriptor: {
+        Id: SGOR004,
+        Title: Parent class must derive from Godot.Node,
+        Description: The parent class must derive from Godot.Node.,
+        MessageFormat: Parent class must derive from Godot.Node,
+        Category: Usage,
+        DefaultSeverity: Error,
+        IsEnabledByDefault: true
+      }
+    }
+  ]
+}

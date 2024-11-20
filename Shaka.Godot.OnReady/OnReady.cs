@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Shaka.Godot.OnReady;
 
@@ -97,19 +99,31 @@ partial record OnReadyMember
         };
     }
 
-    public static OnReadyMember From(IPropertySymbol prop, AttributeData attributeData) =>
+    private static OnReadyMember From(IPropertySymbol prop, AttributeData attributeData) =>
         new OnReadyProperty(prop.Name, prop.Type.FullNameGlobal(), attributeData.GetFirstStringValueOrEmpty());
 
-    public static OnReadyMember From(IMethodSymbol method, AttributeData attributeData) =>
+    private static OnReadyMember From(IMethodSymbol method, AttributeData attributeData) =>
         new OnReadyMethod(method.Name, method.ReturnType.FullNameGlobal(), attributeData.GetFirstStringValueOrEmpty());
 
-    public static bool Validate(ISymbol symbol, SourceProductionContext ctx)
+    public static bool Validate(INamedTypeSymbol classType, ISymbol symbol, SourceProductionContext ctx)
     {
         if (!symbol.HasAttribute(OnReadyGenerator.OnReadyAttribute)) return false;
 
-        var (type, isPartial, isStatic) = ValidationInfo(symbol);
+        var validationInfo = OnReadyMemberValidationInfo.Create(symbol);
         var result = true;
-        if (!type.IsNodeType())
+        
+        if (!classType.IsNodeType())
+        {
+            ctx.ReportDiagnostic(
+                Diagnostic.Create(
+                    Analyzers.ParentClassMustDeriveFromNode,
+                    symbol.Locations.First()
+                )
+            );
+            result = false;
+        }
+        
+        if (!validationInfo.Type.IsNodeType())
         {
             ctx.ReportDiagnostic(
                 Diagnostic.Create(
@@ -121,7 +135,7 @@ partial record OnReadyMember
             result = false;
         }
 
-        if (!isPartial)
+        if (!validationInfo.IsPartial)
         {
             ctx.ReportDiagnostic(
                 Diagnostic.Create(
@@ -132,8 +146,20 @@ partial record OnReadyMember
             );
             result = false;
         }
+        
+        if (!validationInfo.IsReadOnly)
+        {
+            ctx.ReportDiagnostic(
+                Diagnostic.Create(
+                    Analyzers.OnReadyPropertyIsNotReadOnly,
+                    symbol.Locations.First(),
+                    symbol.Name
+                )
+            );
+            result = false;
+        }
 
-        if (isStatic)
+        if (validationInfo.IsStatic)
         {
             ctx.ReportDiagnostic(
                 Diagnostic.Create(
@@ -145,29 +171,18 @@ partial record OnReadyMember
             result = false;
         }
 
-        return result;
-    }
-
-    private static (ITypeSymbol type, bool isPartial, bool isStatic) ValidationInfo(ISymbol symbol)
-    {
-        ITypeSymbol type;
-        bool isPartial;
-        bool isStatic = symbol.IsStatic;
-        switch (symbol)
+        if (!classType.IsPartial())
         {
-            case IPropertySymbol prop:
-                type = prop.Type;
-                isPartial = prop.IsPartialDefinition;
-                break;
-            case IMethodSymbol method:
-                type = method.ReturnType;
-                isPartial = method.IsPartialDefinition;
-                break;
-            default:
-                throw new NotImplementedException($"Method of type {symbol.GetType()} is not supported.");
+            ctx.ReportDiagnostic(
+                Diagnostic.Create(
+                    Analyzers.ParentClassMustBePartial,
+                    symbol.Locations.First()
+                )
+            );
+            result = false;
         }
 
-        return (type, isPartial, isStatic);
+        return result;
     }
 }
 
@@ -189,5 +204,33 @@ partial record OnReadyProperty
     public override string ToSource()
     {
         return @$"public partial {Type} {Name} => GetNode<{Type}>(""{NodePath}"");";
+    }
+}
+
+internal record OnReadyMemberValidationInfo(ITypeSymbol Type, bool IsPartial, bool IsStatic, bool IsReadOnly)
+{
+    internal static OnReadyMemberValidationInfo Create(ISymbol symbol)
+    {
+        
+        ITypeSymbol type;
+        bool isPartial;
+        bool isStatic = symbol.IsStatic;
+        bool isReadOnly = true;
+        switch (symbol)
+        {
+            case IPropertySymbol prop:
+                type = prop.Type;
+                isPartial = prop.IsPartialDefinition;
+                isReadOnly = prop.IsReadOnly;
+                break;
+            case IMethodSymbol method:
+                type = method.ReturnType;
+                isPartial = method.IsPartialDefinition;
+                break;
+            default:
+                throw new NotImplementedException($"Method of type {symbol.GetType()} is not supported.");
+        }
+
+        return new OnReadyMemberValidationInfo(type, isPartial, isStatic, isReadOnly);
     }
 }

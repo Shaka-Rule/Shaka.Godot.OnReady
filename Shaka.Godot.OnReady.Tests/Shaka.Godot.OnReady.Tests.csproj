@@ -29,20 +29,5 @@
         <ProjectReference Include="..\Shaka.Godot.OnReady\Shaka.Godot.OnReady.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-      <None Update="SampleIncrementalSourceGeneratorTests.Driver#OnReadyAttribute.g.verified.cs">
-        <DependentUpon>OnReadyGeneratorAnalyzerTests.cs</DependentUpon>
-      </None>
-      <None Update="SampleIncrementalSourceGeneratorTests.Driver#TestNamespace.Examples.g.verified.cs">
-        <DependentUpon>OnReadyGeneratorAnalyzerTests.cs</DependentUpon>
-      </None>
-      <None Update="SampleIncrementalSourceGeneratorTests.RunResults#OnReadyAttribute.g.verified.cs">
-        <DependentUpon>OnReadyGeneratorAnalyzerTests.cs</DependentUpon>
-      </None>
-      <None Update="SampleIncrementalSourceGeneratorTests.RunResults#TestNamespace.Examples.g.verified.cs">
-        <DependentUpon>OnReadyGeneratorAnalyzerTests.cs</DependentUpon>
-      </None>
-    </ItemGroup>
-
 
 </Project>

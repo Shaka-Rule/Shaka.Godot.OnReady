@@ -7,15 +7,6 @@ namespace Shaka.Godot.OnReady.Tests;
 
 public class AnalyzerTests
 {
-    private static VerifySettings Settings => GetSettings();
-    private static VerifySettings GetSettings()
-    {
-        var settings = new VerifySettings();
-        settings.UseDirectory("VerifyResults");
-        settings.IgnoreGeneratedResult(r => r.HintName.Contains("OnReadyAttribute.g.cs"));
-        return settings;
-    }
-    
     [Fact]
     public Task MembersAreNotNodesShowsSgor001Error()
     {
@@ -23,18 +14,18 @@ public class AnalyzerTests
                               using Shaka.Godot.OnReady;
                               namespace TestNamespace;
 
-                              public class Examples
+                              public partial class Examples : Godot.Node
                               {
                                   [OnReady("frezfrezf")]
-                                  public partial List<MyTest> OnReadyList { get; set; }
+                                  public partial List<MyTest> OnReadyList { get; }
                               
                                   [OnReady("/root/mynode")]
                                   public partial int OnReadyInt();
                               }
                               """;
-        var driver = BuildDriver(CSharpSyntaxTree.ParseText(source));
+        var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, Settings);
+        return Verify(driver, VerifyConfig.Settings);
     }
     
     [Fact]
@@ -45,18 +36,18 @@ public class AnalyzerTests
                               using Godot;
                               namespace TestNamespace;
 
-                              public class Examples
+                              public partial class Examples : Godot.Node
                               {
                                   [OnReady("frezfrezf")]
-                                  public Godot.Node OnReadyList { get; set; }
+                                  public Godot.Node OnReadyList { get; }
                               
                                   [OnReady("/root/mynode")]
                                   public Godot.Node OnReadyInt();
                               }
                               """;
-        var driver = BuildDriver(CSharpSyntaxTree.ParseText(source));
+        var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, Settings);
+        return Verify(driver, VerifyConfig.Settings);
     }
     
     [Fact]
@@ -67,18 +58,18 @@ public class AnalyzerTests
                               using Godot;
                               namespace TestNamespace;
 
-                              public class Examples
+                              public partial class Examples : Godot.Node
                               {
                                   [OnReady("frezfrezf")]
-                                  public static partial Godot.Node OnReadyList { get; set; }
+                                  public static partial Godot.Node OnReadyList { get; }
                               
                                   [OnReady("/root/mynode")]
                                   public static partial Godot.Node OnReadyInt();
                               }
                               """;
-        var driver = BuildDriver(CSharpSyntaxTree.ParseText(source));
+        var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, Settings);
+        return Verify(driver, VerifyConfig.Settings);
     }
     
     [Fact]
@@ -89,18 +80,18 @@ public class AnalyzerTests
                               using Godot;
                               namespace TestNamespace;
 
-                              public class Examples
+                              public partial class Examples : Godot.Node
                               {
                                   [OnReady("frezfrezf")]
-                                  public static int OnReadyList { get; set; }
+                                  public static int OnReadyList { get; }
                               
                                   [OnReady("/root/mynode")]
                                   public static List<int> OnReadyInt();
                               }
                               """;
-        var driver = BuildDriver(CSharpSyntaxTree.ParseText(source));
+        var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, Settings);
+        return Verify(driver, VerifyConfig.Settings);
     }
     
     [Fact]
@@ -111,36 +102,39 @@ public class AnalyzerTests
                               using Godot;
                               namespace TestNamespace;
 
-                              public class Examples
+                              public partial class Examples : Godot.Node
                               {
                                   [OnReady("frezfrezf")]
-                                  public static int OnReadyIntInvalid { get; set; }
+                                  public static int OnReadyIntInvalid { get; }
                                   [OnReady("/root/mynode")]
                                   public static List<int> OnReadyListIntInvalid();
                                   
                                   [OnReady("frezfrezf")]
-                                  public partial Godot.Node2D OnReadyNode2DValid { get; set; }
+                                  public partial Godot.Node2D OnReadyNode2DValid { get; }
                                   [OnReady("/root/mynode")]
                                   public partial Godot.Node3D OnReadyNode3DValid();
                               }
                               """;
-        var driver = BuildDriver(CSharpSyntaxTree.ParseText(source));
+        var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, Settings);
+        return Verify(driver, VerifyConfig.Settings);
     }
-
-    private static GeneratorDriver BuildDriver(params IEnumerable<SyntaxTree> inputSources)
+    
+    [Fact]
+    public Task ClassDoesNotDeriveFromNodeShowsSgor004()
     {
-        var compilation = CSharpCompilation.Create(nameof(AnalyzerTests),
-            inputSources,
-            [
-                // To support 'System.Attribute' inheritance, add reference to 'System.Private.CoreLib'.
-                MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
-                MetadataReference.CreateFromFile(typeof(Node).Assembly.Location)
-            ]);
-        var generator = new OnReadyGenerator();
+        const string source = """
+                              using Shaka.Godot.OnReady;
+                              namespace TestNamespace;
 
-        var driver = CSharpGeneratorDriver.Create(generator);
-        return driver.RunGenerators(compilation);
+                              public partial class Examples
+                              {
+                                  [OnReady("Player")]
+                                  public partial Godot.Node2D Player { get; }
+                              }
+                              """;
+        var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
+
+        return Verify(driver, VerifyConfig.Settings);
     }
 }

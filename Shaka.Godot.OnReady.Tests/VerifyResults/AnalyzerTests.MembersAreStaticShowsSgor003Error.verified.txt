@@ -3,7 +3,7 @@
     {
       Location: /*
     [OnReady("frezfrezf")]
-    public static partial Godot.Node OnReadyList { get; set; }
+    public static partial Godot.Node OnReadyList { get; }
                                      ^^^^^^^^^^^
 
 */

@@ -3,7 +3,7 @@
     {
       Location: /*
     [OnReady("frezfrezf")]
-    public static int OnReadyIntInvalid { get; set; }
+    public static int OnReadyIntInvalid { get; }
                       ^^^^^^^^^^^^^^^^^
     [OnReady("/root/mynode")]
 */
@@ -23,7 +23,7 @@
     {
       Location: /*
     [OnReady("frezfrezf")]
-    public static int OnReadyIntInvalid { get; set; }
+    public static int OnReadyIntInvalid { get; }
                       ^^^^^^^^^^^^^^^^^
     [OnReady("/root/mynode")]
 */
@@ -43,7 +43,7 @@
     {
       Location: /*
     [OnReady("frezfrezf")]
-    public static int OnReadyIntInvalid { get; set; }
+    public static int OnReadyIntInvalid { get; }
                       ^^^^^^^^^^^^^^^^^
     [OnReady("/root/mynode")]
 */

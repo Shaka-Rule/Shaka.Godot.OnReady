@@ -4,5 +4,8 @@ using Godot;
 namespace TestNamespace;
 partial class Examples
 {
-    public partial global::Godot.Node MyNode => GetNode<global::Godot.Node>("/root/mynode");
+    public partial global::Godot.Node2D Player()
+    {
+        return GetNode<global::Godot.Node2D>("Player");
+    }
 }

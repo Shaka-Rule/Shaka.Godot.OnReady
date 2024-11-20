@@ -66,4 +66,10 @@ public static partial class OnReadyExtensions
     }
 
     public static bool IsNodeType(this ITypeSymbol? symbol) => symbol.InheritsFrom("Godot.Node");
+    
+    public static bool IsPartial(this INamedTypeSymbol typeSymbol) =>
+        typeSymbol.DeclaringSyntaxReferences.Any(syntax =>
+            syntax.GetSyntax() is BaseTypeDeclarationSyntax declaration
+            && declaration.Modifiers.Any(modifier => modifier.IsKind(SyntaxKind.PartialKeyword))
+        );
 }

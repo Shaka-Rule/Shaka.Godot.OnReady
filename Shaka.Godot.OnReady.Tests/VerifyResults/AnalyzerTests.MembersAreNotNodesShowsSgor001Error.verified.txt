@@ -3,7 +3,7 @@
     {
       Location: /*
     [OnReady("frezfrezf")]
-    public partial List<MyTest> OnReadyList { get; set; }
+    public partial List<MyTest> OnReadyList { get; }
                                 ^^^^^^^^^^^
 
 */

@@ -3,7 +3,7 @@
     {
       Location: /*
     [OnReady("frezfrezf")]
-    public static int OnReadyList { get; set; }
+    public static int OnReadyList { get; }
                       ^^^^^^^^^^^
 
 */
@@ -23,7 +23,7 @@
     {
       Location: /*
     [OnReady("frezfrezf")]
-    public static int OnReadyList { get; set; }
+    public static int OnReadyList { get; }
                       ^^^^^^^^^^^
 
 */
@@ -43,7 +43,7 @@
     {
       Location: /*
     [OnReady("frezfrezf")]
-    public static int OnReadyList { get; set; }
+    public static int OnReadyList { get; }
                       ^^^^^^^^^^^
 
 */
