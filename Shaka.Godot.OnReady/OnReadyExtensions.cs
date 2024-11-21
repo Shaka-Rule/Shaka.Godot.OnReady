@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Shaka.Godot.OnReady;
 
-public static partial class OnReadyExtensions
+public static class OnReadyExtensions
 {
     public static string Indent(this string s, int amount)
     {
@@ -72,4 +72,18 @@ public static partial class OnReadyExtensions
             syntax.GetSyntax() is BaseTypeDeclarationSyntax declaration
             && declaration.Modifiers.Any(modifier => modifier.IsKind(SyntaxKind.PartialKeyword))
         );
+
+    public static string ToUnderScoreFirstLower(this string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return text;
+
+        var firstChar = char.ToLower(text[0]);
+        var rest = text[1..];
+        return $"_{firstChar}{rest}";
+    }
+
+    public static bool IsNullable(this ITypeSymbol type)
+    {
+        return type.NullableAnnotation == NullableAnnotation.Annotated;
+    }
 }

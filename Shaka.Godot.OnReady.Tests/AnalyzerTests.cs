@@ -25,7 +25,7 @@ public class AnalyzerTests
                               """;
         var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, VerifyConfig.Settings);
+        return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
     [Fact]
@@ -47,7 +47,7 @@ public class AnalyzerTests
                               """;
         var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, VerifyConfig.Settings);
+        return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
     [Fact]
@@ -69,7 +69,7 @@ public class AnalyzerTests
                               """;
         var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, VerifyConfig.Settings);
+        return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
     [Fact]
@@ -91,7 +91,7 @@ public class AnalyzerTests
                               """;
         var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, VerifyConfig.Settings);
+        return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
     [Fact]
@@ -117,7 +117,7 @@ public class AnalyzerTests
                               """;
         var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, VerifyConfig.Settings);
+        return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
     [Fact]
@@ -135,6 +135,6 @@ public class AnalyzerTests
                               """;
         var driver = VerifyConfig.BuildDriver(CSharpSyntaxTree.ParseText(source));
 
-        return Verify(driver, VerifyConfig.Settings);
+        return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
 }

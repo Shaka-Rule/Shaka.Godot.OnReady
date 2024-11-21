@@ -9,6 +9,9 @@ partial class Examples
     public partial global::Godot.Node2D Player => _player ??= GetNode<global::Godot.Node2D>("Player");
     
     private global::Godot.Sprite2D? _sprite;
-    public partial global::Godot.Sprite2D Sprite => _sprite ??= GetNode<global::Godot.Sprite2D>("Player/Sprite");
+    protected partial global::Godot.Sprite2D Sprite => _sprite ??= GetNode<global::Godot.Sprite2D>("Player/Sprite");
+    
+    private global::Godot.Node2D? _sword;
+    private partial global::Godot.Node2D Sword => _sword ??= GetNode<global::Godot.Node2D>("Player/Sword");
 }
 #nullable restore

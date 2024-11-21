@@ -13,7 +13,16 @@ public static class VerifyConfig
         VerifySourceGenerators.Initialize();
     }
     internal static VerifySettings Settings => GetSettings();
+    internal static VerifySettings SettingsIgnoreInitGenerated => GetSettingsIgnoreInitGenerated();
+    
     private static VerifySettings GetSettings()
+    {
+        var settings = new VerifySettings();
+        settings.UseDirectory("VerifyResults");
+        return settings;
+    }
+    
+    private static VerifySettings GetSettingsIgnoreInitGenerated()
     {
         var settings = new VerifySettings();
         settings.UseDirectory("VerifyResults");

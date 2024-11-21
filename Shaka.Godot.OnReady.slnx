@@ -1,5 +1,7 @@
 ﻿<Solution>
-<!--  <Project Path="Shaka.Godot.OnReady.Sample\Shaka.Godot.OnReady.Sample.csproj" Type="Classic C#" />-->
+  <Project Path="Shaka.Godot.OnReady.Sample\Shaka.Godot.OnReady.Sample.csproj" Type="Classic C#">
+    <Configuration Solution="Release|Any CPU" Project="Debug|Any CPU" />
+  </Project>
   <Project Path="Shaka.Godot.OnReady.Tests\Shaka.Godot.OnReady.Tests.csproj" Type="Classic C#" />
   <Project Path="Shaka.Godot.OnReady\Shaka.Godot.OnReady.csproj" Type="Classic C#" />
 </Solution>
