@@ -1,13 +1,10 @@
-using Godot;
-using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-
 
 namespace Shaka.Godot.OnReady.Tests;
 
 public class AnalyzerTests
 {
-    [Fact]
+    [Test]
     public Task MembersAreNotNodesShowsSgor001Error()
     {
         const string source = """
@@ -28,7 +25,7 @@ public class AnalyzerTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MembersAreNotPartialShowsSgor002Error()
     {
         const string source = """
@@ -50,7 +47,7 @@ public class AnalyzerTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MembersAreStaticShowsSgor003Error()
     {
         const string source = """
@@ -72,7 +69,7 @@ public class AnalyzerTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MembersAreStaticNonNodeNonPartialShowsSgor001_002_003Error()
     {
         const string source = """
@@ -94,7 +91,7 @@ public class AnalyzerTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MemberIsValidAndOtherIsStaticNonNodeNonPartialShowsSgor001_002_003Error()
     {
         const string source = """
@@ -120,7 +117,7 @@ public class AnalyzerTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task ClassDoesNotDeriveFromNodeShowsSgor004()
     {
         const string source = """

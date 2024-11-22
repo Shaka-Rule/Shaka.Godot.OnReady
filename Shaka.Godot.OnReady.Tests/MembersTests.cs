@@ -4,7 +4,7 @@ namespace Shaka.Godot.OnReady.Tests;
 
 public class MembersTests
 {
-    [Fact]
+    [Test]
     public Task MemberGeneratedFor1Property()
     {
         const string source = """
@@ -21,7 +21,7 @@ public class MembersTests
 
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
-    [Fact]
+    [Test]
     public Task MemberGeneratedFor1PropertyNullable()
     {
         const string source = """
@@ -39,7 +39,7 @@ public class MembersTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MembersGeneratedFor2Properties()
     {
         const string source = """
@@ -59,7 +59,7 @@ public class MembersTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
         
-    [Fact]
+    [Test]
     public Task MembersGeneratedFor3PropertiesWithDifferentModifiers()
     {
         const string source = """
@@ -81,7 +81,7 @@ public class MembersTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MemberGeneratedFor1Method()
     {
         const string source = """
@@ -99,7 +99,7 @@ public class MembersTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MemberGeneratedFor1MethodNullable()
     {
         const string source = """
@@ -117,7 +117,7 @@ public class MembersTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MembersGeneratedFor2Methods()
     {
         const string source = """
@@ -137,7 +137,7 @@ public class MembersTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MembersGeneratedFor3MethodsWithDifferentModifiers()
     {
         const string source = """
@@ -159,7 +159,7 @@ public class MembersTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MembersGeneratedFor1PropertyAnd1Method()
     {
         const string source = """
@@ -179,7 +179,7 @@ public class MembersTests
         return Verify(driver, VerifyConfig.SettingsIgnoreInitGenerated);
     }
     
-    [Fact]
+    [Test]
     public Task MembersGeneratedFor1MethodAnd1Property()
     {
         const string source = """

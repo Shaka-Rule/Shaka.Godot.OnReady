@@ -2,7 +2,7 @@ namespace Shaka.Godot.OnReady.Tests;
 
 public class OnReadyAttributeTests
 {
-    [Fact]
+    [Test]
     public Task InitGeneratesOnReadyAttributeWithoutSource()
     {
         var driver = VerifyConfig.BuildDriver();
