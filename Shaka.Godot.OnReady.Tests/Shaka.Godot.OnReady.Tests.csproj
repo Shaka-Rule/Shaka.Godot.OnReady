@@ -22,5 +22,41 @@
         <ProjectReference Include="..\Shaka.Godot.OnReady\Shaka.Godot.OnReady.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="MembersTests\VerifyResults\MembersTests.MemberGeneratedFor1Method#TestNamespace.Examples.g.verified.cs">
+        <ParentFile>MembersTests</ParentFile>
+      </None>
+      <None Update="MembersTests\VerifyResults\MembersTests.MemberGeneratedFor1MethodNullable#TestNamespace.Examples.g.verified.cs">
+        <ParentFile>MembersTests</ParentFile>
+      </None>
+      <None Update="MembersTests\VerifyResults\MembersTests.MemberGeneratedFor1Property#TestNamespace.Examples.g.verified.cs">
+        <ParentFile>MembersTests</ParentFile>
+      </None>
+      <None Update="MembersTests\VerifyResults\MembersTests.MemberGeneratedFor1PropertyNullable#TestNamespace.Examples.g.verified.cs">
+        <ParentFile>MembersTests</ParentFile>
+      </None>
+      <None Update="MembersTests\VerifyResults\MembersTests.MembersGeneratedFor1MethodAnd1Property#TestNamespace.Examples.g.verified.cs">
+        <ParentFile>MembersTests</ParentFile>
+      </None>
+      <None Update="MembersTests\VerifyResults\MembersTests.MembersGeneratedFor1PropertyAnd1Method#TestNamespace.Examples.g.verified.cs">
+        <ParentFile>MembersTests</ParentFile>
+      </None>
+      <None Update="MembersTests\VerifyResults\MembersTests.MembersGeneratedFor2Methods#TestNamespace.Examples.g.verified.cs">
+        <ParentFile>MembersTests</ParentFile>
+      </None>
+      <None Update="MembersTests\VerifyResults\MembersTests.MembersGeneratedFor2Properties#TestNamespace.Examples.g.verified.cs">
+        <ParentFile>MembersTests</ParentFile>
+      </None>
+      <None Update="MembersTests\VerifyResults\MembersTests.MembersGeneratedFor3MethodsWithDifferentModifiers#TestNamespace.Examples.g.verified.cs">
+        <ParentFile>MembersTests</ParentFile>
+      </None>
+      <None Update="MembersTests\VerifyResults\MembersTests.MembersGeneratedFor3PropertiesWithDifferentModifiers#TestNamespace.Examples.g.verified.cs">
+        <ParentFile>MembersTests</ParentFile>
+      </None>
+      <None Update="OnReadyAttributeTests\VerifyResults\OnReadyAttributeTests.InitGeneratesOnReadyAttributeWithoutSource#OnReadyAttribute.g.verified.cs">
+        <ParentFile>OnReadyAttributeTests</ParentFile>
+      </None>
+    </ItemGroup>
+
 
 </Project>
