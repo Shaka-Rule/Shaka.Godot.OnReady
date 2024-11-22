@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <IsPackable>false</IsPackable>
+        <IsPackable>true</IsPackable>
         <Nullable>enable</Nullable>
         <LangVersion>preview</LangVersion>
 
@@ -11,6 +11,13 @@
 
         <RootNamespace>Shaka.Godot.OnReady</RootNamespace>
         <PackageId>Shaka.Godot.OnReady</PackageId>
+        <Title>Godot OnReady Attribute</Title>
+        <Authors>Shaka</Authors>
+        <Description>Source generator which addes an OnReady attribute. It automatically implements a member to call GetNode or GetNodeNull when accessed.</Description>
+        <PackageIcon>GodotIcon.png</PackageIcon>
+        <RepositoryUrl>https://github.com/Shaka-Rule/Shaka.Godot.OnReady</RepositoryUrl>
+        <PackageTags>Godot, SourceGenerator, Addon</PackageTags>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,6 +27,13 @@
         </PackageReference>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0"/>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.11.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="GodotIcon.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
 

@@ -4,6 +4,8 @@
         <TargetFramework>net9.0</TargetFramework>
         <LangVersion>preview</LangVersion>
         <Nullable>enable</Nullable>
+        <OutputType>Exe</OutputType>
+        <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>Shaka.Godot.OnReady.Sample</RootNamespace>
     </PropertyGroup>
 
