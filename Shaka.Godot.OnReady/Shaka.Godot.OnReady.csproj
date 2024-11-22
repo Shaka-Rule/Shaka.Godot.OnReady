@@ -5,11 +5,15 @@
         <IsPackable>true</IsPackable>
         <Nullable>enable</Nullable>
         <LangVersion>preview</LangVersion>
-
+    </PropertyGroup>
+    
+    <PropertyGroup>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <IsRoslynComponent>true</IsRoslynComponent>
-
         <RootNamespace>Shaka.Godot.OnReady</RootNamespace>
+    </PropertyGroup>
+    
+    <PropertyGroup>
         <PackageId>Shaka.Godot.OnReady</PackageId>
         <Title>Godot OnReady Attribute</Title>
         <Authors>Shaka</Authors>
@@ -17,7 +21,10 @@
         <PackageIcon>GodotIcon.png</PackageIcon>
         <RepositoryUrl>https://github.com/Shaka-Rule/Shaka.Godot.OnReady</RepositoryUrl>
         <PackageTags>Godot, SourceGenerator, Addon</PackageTags>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Copyright>ShakaRule 2024</Copyright>
+        <PackageProjectUrl>https://github.com/Shaka-Rule/Shaka.Godot.OnReady</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/Shaka-Rule/Shaka.Godot.OnReady/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
 
     <ItemGroup>
