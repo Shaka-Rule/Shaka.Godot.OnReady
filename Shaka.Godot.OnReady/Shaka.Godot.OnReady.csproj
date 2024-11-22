@@ -24,7 +24,8 @@
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <Copyright>ShakaRule 2024</Copyright>
         <PackageProjectUrl>https://github.com/Shaka-Rule/Shaka.Godot.OnReady</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/Shaka-Rule/Shaka.Godot.OnReady/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
     
     <ItemGroup>
@@ -37,6 +38,8 @@
     </ItemGroup>
     
     <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="\"/>
+        <None Include="../LICENSE" Pack="true" PackagePath="\"/>
         <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
     </ItemGroup>
 
