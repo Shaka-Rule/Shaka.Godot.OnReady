@@ -20,6 +20,9 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
+
+    - name: print dir
+      run: ls -a
         
     - name: Restore Shaka.Godot.OnReady
       working-directory: .\Shaka.Godot.OnReady\
