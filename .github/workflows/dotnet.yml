@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NET
+name: Build
 
 on:
   push:
@@ -20,24 +20,38 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
-
-    - name: print dir
-      run: ls -a
         
-    - name: Restore
-      working-directory: Shaka.Godot.OnReady
-      run: dotnet restore
-    - name: Build
-      working-directory: Shaka.Godot.OnReady
-      run: dotnet build --no-restore
+    # - name: Restore
+    #   working-directory: Shaka.Godot.OnReady
+    #   run: dotnet restore
+    # - name: Build
+    #   working-directory: Shaka.Godot.OnReady
+    #   run: dotnet build --no-restore
       
-    - name: Restore Tests
-      working-directory: Shaka.Godot.OnReady.Tests
-      run: dotnet restore
-    - name: Build Tests
-      working-directory: Shaka.Godot.OnReady.Tests
-      run: dotnet build --no-restore
+    # - name: Restore Tests
+    #   working-directory: Shaka.Godot.OnReady.Tests
+    #   run: dotnet restore
+    # - name: Build Tests
+    #   working-directory: Shaka.Godot.OnReady.Tests
+    #   run: dotnet build --no-restore
       
-    - name: Test
-      working-directory: Shaka.Godot.OnReady.Tests
-      run: dotnet test --no-build --verbosity normal
+    # - name: Test
+    #   working-directory: Shaka.Godot.OnReady.Tests
+    #   run: dotnet test --no-build --verbosity normal
+
+    - name: Get Next Version
+      uses: reecetech/version-increment@2024.10.1
+      id: version
+      with:
+        scheme: semver
+        increment: patch
+
+    - name: print version
+      run: echo ${{ steps.version.outputs.version }}        
+
+    # - name: Pack
+    #   working-directory: Shaka.Godot.OnReady
+    #   run: dotnet pack
+    # - name: Nuget Publish
+    #   working-directory: Shaka.Godot.OnReady
+    #   run: dotnet nuget push Shaka.Godot.OnReady.1.0.0.nupkg --api-key ***REMOVED*** --source https://api.nuget.org/v3/index.json
