@@ -25,17 +25,17 @@ jobs:
       run: ls -a
         
     - name: Restore Shaka.Godot.OnReady
-      working-directory: .\Shaka.Godot.OnReady\
+      working-directory: Shaka.Godot.OnReady
       run: dotnet restore
     - name: Build Shaka.Godot.OnReady
-      working-directory: .\Shaka.Godot.OnReady\
+      working-directory: Shaka.Godot.OnReady
       run: dotnet build --no-restore
       
     - name: Restore Shaka.Godot.OnReady.Tests
-      working-directory: .\Shaka.Godot.OnReady.Tests\
+      working-directory: Shaka.Godot.OnReady.Tests
       run: dotnet restore
     - name: Build
-      working-directory: .\Shaka.Godot.OnReady.Tests\
+      working-directory: Shaka.Godot.OnReady.Tests
       run: dotnet build --no-restore
       
     - name: Test
