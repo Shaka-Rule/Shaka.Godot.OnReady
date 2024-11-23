@@ -7,8 +7,8 @@ on:
     #branches: [ "master" ]
 
 jobs:
-  build:
-
+  publish:
+    name: Build & Test & Publish
     runs-on: ubuntu-latest
 
     steps:
@@ -47,7 +47,7 @@ jobs:
       working-directory: Shaka.Godot.OnReady
       run: dotnet pack -c Release --no-build -p:PackageVersion=${{ steps.version.outputs.version }}
     - name: Nuget Publish
-      working-directory: Shaka.Godot.OnReady
+      working-directory: Shaka.Godot.OnReady/bin/Release
       run: dotnet nuget push Shaka.Godot.OnReady.${{ steps.version.outputs.version }}.nupkg --api-key ${{ secrets.API_KEY_NUGET_TEST }} --source https://int.nugettest.org/
       
     - name: Tag
