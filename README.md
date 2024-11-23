@@ -23,7 +23,7 @@ Add the Onready attribute to any partial property or method in a class deriving 
 public partial class Player : CharacterBody2D
 {
     [OnReady("%Sprite2D")]
-    private Sprite2D Sprite { get; }
+    private partial Sprite2D Sprite { get; }
 }
 ```
 This will generate:
@@ -40,7 +40,7 @@ public partial class Player
 public partial class Player : CharacterBody2D
 {
     [OnReady("%Sprite2D")]
-    private Sprite2D Sprite();
+    private partial Sprite2D Sprite();
 }
 ```
 This will generate:
