@@ -24,19 +24,20 @@ jobs:
     - name: print dir
       run: ls -a
         
-    - name: Restore Shaka.Godot.OnReady
+    - name: Restore
       working-directory: Shaka.Godot.OnReady
       run: dotnet restore
-    - name: Build Shaka.Godot.OnReady
+    - name: Build
       working-directory: Shaka.Godot.OnReady
       run: dotnet build --no-restore
       
-    - name: Restore Shaka.Godot.OnReady.Tests
+    - name: Restore Tests
       working-directory: Shaka.Godot.OnReady.Tests
       run: dotnet restore
-    - name: Build
+    - name: Build Tests
       working-directory: Shaka.Godot.OnReady.Tests
       run: dotnet build --no-restore
       
     - name: Test
+      working-directory: Shaka.Godot.OnReady.Tests
       run: dotnet test --no-build --verbosity normal
