@@ -20,9 +20,20 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
-    - name: Restore dependencies
+        
+    - name: Restore Shaka.Godot.OnReady
+      working-directory: .\Shaka.Godot.OnReady\
+      run: dotnet restore
+    - name: Build Shaka.Godot.OnReady
+      working-directory: .\Shaka.Godot.OnReady\
+      run: dotnet build --no-restore
+      
+    - name: Restore Shaka.Godot.OnReady.Tests
+      working-directory: .\Shaka.Godot.OnReady.Tests\
       run: dotnet restore
     - name: Build
+      working-directory: .\Shaka.Godot.OnReady.Tests\
       run: dotnet build --no-restore
+      
     - name: Test
       run: dotnet test --no-build --verbosity normal
