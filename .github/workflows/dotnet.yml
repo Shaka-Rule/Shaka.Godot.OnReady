@@ -23,18 +23,18 @@ jobs:
       run: dotnet restore
     - name: Build
       working-directory: Shaka.Godot.OnReady
-      run: dotnet build --no-restore
+      run: dotnet build -c Release --no-restore
       
     - name: Restore Tests
       working-directory: Shaka.Godot.OnReady.Tests
       run: dotnet restore
     - name: Build Tests
       working-directory: Shaka.Godot.OnReady.Tests
-      run: dotnet build --no-restore
+      run: dotnet build -c Release --no-restore
       
     - name: Test
       working-directory: Shaka.Godot.OnReady.Tests
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test  -c Release --no-build --verbosity normal
 
     - name: Get Next Version
       uses: reecetech/version-increment@2024.10.1
@@ -42,11 +42,6 @@ jobs:
       with:
         scheme: semver
         increment: patch 
-      
-    - name: Tag
-      run: git tag ${{ steps.version.outputs.v-version }}
-    - name: Push Tag
-      run: git push origin ${{ steps.version.outputs.v-version }}
 
     - name: Pack
       working-directory: Shaka.Godot.OnReady
@@ -54,3 +49,8 @@ jobs:
     - name: Nuget Publish
       working-directory: Shaka.Godot.OnReady
       run: dotnet nuget push Shaka.Godot.OnReady.${{ steps.version.outputs.version }}.nupkg --api-key ${{ secrets.API_KEY_NUGET_TEST }} --source https://int.nugettest.org/
+      
+    - name: Tag
+      run: git tag ${{ steps.version.outputs.v-version }}
+    - name: Push Tag
+      run: git push origin ${{ steps.version.outputs.v-version }}
