@@ -54,4 +54,4 @@ jobs:
     #   run: dotnet pack
     # - name: Nuget Publish
     #   working-directory: Shaka.Godot.OnReady
-    #   run: dotnet nuget push Shaka.Godot.OnReady.1.0.0.nupkg --api-key ***REMOVED*** --source https://api.nuget.org/v3/index.json
+    #   run: dotnet nuget push Shaka.Godot.OnReady.1.0.0.nupkg --api-key ${{}} --source https://api.nuget.org/v3/index.json
