@@ -1,0 +1,39 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request: 
+    branches: 
+      - '**'
+
+jobs:
+  publish:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+        
+    - name: Restore
+      working-directory: Shaka.Godot.OnReady
+      run: dotnet restore
+    - name: Build
+      working-directory: Shaka.Godot.OnReady
+      run: dotnet build -c Release --no-restore
+      
+    - name: Restore Tests
+      working-directory: Shaka.Godot.OnReady.Tests
+      run: dotnet restore
+    - name: Build Tests
+      working-directory: Shaka.Godot.OnReady.Tests
+      run: dotnet build -c Release --no-restore
+      
+    - name: Test
+      working-directory: Shaka.Godot.OnReady.Tests
+      run: dotnet test  -c Release --no-build --verbosity normal
